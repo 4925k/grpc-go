@@ -21,4 +21,5 @@ func main() {
 	client := proto.NewCalculatorServiceClient(conn)
 
 	doSum(client)
+	doPrimes(client)
 }
