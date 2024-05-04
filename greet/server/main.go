@@ -2,6 +2,7 @@ package main
 
 import (
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 	"log"
 	"net"
 
@@ -24,7 +25,18 @@ func main() {
 
 	log.Printf("listening on %s", addr)
 
-	s := grpc.NewServer()
+	tls := true
+	opts := []grpc.ServerOption{}
+	if tls {
+		creds, err := credentials.NewServerTLSFromFile("ssl/server.crt", "ssl/server.pem")
+		if err != nil {
+			log.Fatalf("Failed to generate credentials %v", err)
+		}
+
+		opts = append(opts, grpc.Creds(creds))
+	}
+
+	s := grpc.NewServer(opts...)
 	pb.RegisterGreetServiceServer(s, &Server{})
 
 	if err := s.Serve(lis); err != nil {

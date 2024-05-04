@@ -24,9 +24,12 @@ func doGreetDeadline(client proto.GreetServiceClient, timeout time.Duration) {
 			if e.Code() == codes.DeadlineExceeded {
 				log.Fatalf("timeout exceeded")
 			}
+
+			log.Fatalf("error: %v", e)
 		} else {
 			log.Fatalf("greet with deadline unexpected error: %v", err)
 		}
+		return
 	}
 
 	fmt.Println("Greet With Deadline: ", res.Result)
