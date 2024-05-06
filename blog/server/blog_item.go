@@ -1,4 +1,4 @@
-package server
+package main
 
 import (
 	"github.com/4925k/grpc-go/blog/proto"

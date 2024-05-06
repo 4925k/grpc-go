@@ -1,4 +1,4 @@
-package server
+package main
 
 import (
 	"context"
@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	addr       = "0.0.0.0:5003"
+	addr       = "0.0.0.0:50053"
 	collection *mongo.Collection
 )
 
