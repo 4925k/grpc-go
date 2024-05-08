@@ -20,8 +20,9 @@ func main() {
 
 	client := proto.NewBlogServiceClient(conn)
 
-	id := createBlog(client)
-	readBlog(client, id)
-	updateBlog(client, id)
-	readBlog(client, id)
+	//id := createBlog(client)
+	//readBlog(client, id)
+	//updateBlog(client, id)
+	//readBlog(client, id)
+	listBlogs(client)
 }
