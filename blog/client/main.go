@@ -20,9 +20,11 @@ func main() {
 
 	client := proto.NewBlogServiceClient(conn)
 
-	//id := createBlog(client)
+	id := createBlog(client)
 	//readBlog(client, id)
 	//updateBlog(client, id)
 	//readBlog(client, id)
 	listBlogs(client)
+
+	deleteBlog(client, id)
 }
